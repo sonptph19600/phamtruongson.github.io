@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="organizerManagementApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Quản lý | Người tổ chức</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="https://ap.poly.edu.vn/images/favicon.ico">
+
+    <!-- Libary -->
+    <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/fontawesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/feathericon/feathericon.min.css">
+    <link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="assets/plugins/morris/morris.css"> -->
+    <link rel="stylesheet" href="assets/vendor/toastr/toastr.min.css">
+    <!-- Custom -->
+    <link rel="stylesheet" type="text/css" href="assets/css/management-style.css">
+</head>
+
+<body ng-controller="myController">
+    <div class="main-wrapper">
+        <div class="header">
+            <div class="header-left">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/Logo_none.png" alt="Logo">
+                </a>
+                <a href="index.html" class="logo logo-small">
+                    <img src="assets/images/icon.png" alt="Logo" width="60" height="60">
+                </a>
+            </div>
+
+            <a href="javascript:void(0);" id="toggle_btn">
+                <i class="fe fe-text-align-left"></i>
+            </a>
+            <div class="top-nav-search">
+                <form>
+                    <input type="text" class="form-control" placeholder="Search here">
+                    <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+
+            <a class="mobile_btn" id="mobile_btn">
+                <i class="fa fa-bars"></i>
+            </a>
+
+            <ul class="nav user-menu">
+                <li class="nav-item dropdown noti-dropdown">
+                    <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                        <i class="fa fa-bell"></i> <span class="badge badge-pill">3</span>
+                    </a>
+                    <div class="dropdown-menu notifications">
+                        <div class="topnav-dropdown-header">
+                            <span class="notification-title">Notifications</span>
+                            <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+                        </div>
+                        <div class="noti-content">
+                            <ul class="notification-list">
+                                <li class="notification-message">
+                                    <a href="#">
+                                        <div class="media d-flex">
+                                            <span class="avatar avatar-sm flex-shrink-0">
+                                                <img class="avatar-img rounded-circle" alt="User Image"
+                                                    src="assets/images/IMG_6530.JPG">
+                                            </span>
+                                            <div class="media-body flex-grow-1">
+                                                <p class="noti-details"><span class="noti-title">Carlson Tech</span> has
+                                                    approved <span class="noti-title">your estimate</span></p>
+                                                <p class="noti-time"><span class="notification-time">4 mins ago</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="topnav-dropdown-footer">
+                            <a href="#">View all Notifications</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown has-arrow">
+                    <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                        <span class="user-img"><img class="rounded-circle" src="assets/images/IMG_6530.JPG"
+                                width="31"></span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="user-header">
+                            <div class="avatar avatar-sm">
+                                <img src="assets/images/IMG_6530.JPG" alt="User Image"
+                                    class="avatar-img rounded-circle">
+                            </div>
+                            <div class="user-text">
+                                <h6>Phạm Trường Sơn</h6>
+                                <p class="text-muted mb-0">Người tổ chức</p>
+                            </div>
+                        </div>
+                        <a class="dropdown-item" href="general.html">My Profile</a>
+                        <a class="dropdown-item" href="login.html">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li ng-class="{active: isActive('/event-register')}">
+                            <a href="#event-register"><i class="fe fe-home"></i> <span>Đăng ký sự kiện</span></a>
+                        </li>
+                        <li ng-class="{active: isActive('/event-manager')}">
+                            <a href="#event-manager"><i class="fe fe-calendar"></i> <span>Sự kiện đã đăng ký</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                <div class="row">
+                    <!-- Inlcude nội dung zô đây -->
+                    <ng-view></ng-view>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Libary -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/angular/angular.min.js"></script>
+    <script src="assets/vendor/angular/angular-route.min.js"></script>
+    <script src="assets/vendor/angular/angular-css.js"></script>
+    <script src="assets/vendor/jquery/jquery-3.6.4.min.js"></script>
+    <script src="assets/vendor/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/vendor/export-excel/xlsx.full.min.js"></script>
+    <script src="./assets/vendor/lodash/lodash.js"></script>
+    <script src="assets/vendor/quill/quill.js"></script>
+    <script src="config/api.js"></script>
+    <script src="config/organizer-management-app.js"></script>
+    <script src="assets/vendor/toastr/toastr.min.js"></script>
+    <script src="./service/organizer/om-category-service.js"></script>
+    <script src="./service/organizer/om-convert-date.js"></script>
+    <script src="./service/organizer/om-event-service.js"></script>
+    <script src="./service/organizer/om-resource-service.js"></script>
+    <script src="./service/organizer/om-participant-service.js"></script>
+    <!-- Custom -->
+    <script src="assets/js/management.js"></script>
+    <script src="./controller/organizer-management-controller/event-manager-controller.js"></script>
+    <script src="./controller/organizer-management-controller/event-register-controller.js"></script>
+    <script src="./controller/organizer-management-controller/attendance-controller.js"></script>
+    <script src="./controller/organizer-management-controller/detail-event-controller.js"></script>
+    <script src="./controller/organizer-management-controller/participant-and-question-controller.js"></script>
+    <script src="route/organizer-management-route.js"></script>
+</body>
+
+</html>

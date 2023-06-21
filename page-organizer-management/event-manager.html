@@ -1,0 +1,287 @@
+<div class="">
+  <h4>Sự kiện đã đăng ký</h4>
+  <div class="container-fluid filter">
+    <section>
+      <div class="title_filter"><i class="fa fa-filter"></i> Bộ lọc</div>
+      <hr />
+      <div class="container" style="margin-top: 30px; text-align: center">
+        <button
+          class="btn_filter_event"
+          ng-class="{active: selectedFilter === null}"
+          ng-click="filterEvent(null)"
+        >
+          Tất cả
+        </button>
+        <button
+          class="btn_filter_event"
+          ng-class="{active: selectedFilter === 0}"
+          ng-click="filterEvent(0)"
+        >
+          Chờ phê duyệt
+        </button>
+        <button
+          class="btn_filter_event"
+          ng-class="{active: selectedFilter === 1}"
+          ng-click="filterEvent(1)"
+        >
+          Cần sửa
+        </button>
+        <button
+          class="btn_filter_event"
+          ng-class="{active: selectedFilter === 2}"
+          ng-click="filterEvent(2)"
+        >
+          Đã phê duyệt
+        </button>
+        <button
+          class="btn_filter_event"
+          ng-class="{active: selectedFilter === 3}"
+          ng-click="filterEvent(3)"
+        >
+          Đã tổ chức
+        </button>
+        <div class="row" style="margin-top: 50px">
+          <div
+            class="col-lg-6 col-md-12"
+            style="
+              text-align: center;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            <div class="form-group col-md-6 col-12 d-flex align-items-center">
+              <span
+                for=""
+                style="font-size: 15px"
+                class="fillter-name col-6 text-center"
+                >Tên sự kiện:</span
+              >
+              <input
+                placeholder="Nhập tên sự kiện"
+                type="text"
+                ng-model="name"
+                class="form-control form-control-sm col-lg-6 col-sm-3"
+              />
+            </div>
+          </div>
+          <div
+            class="col-lg-6 col-md-12"
+            style="
+              text-align: center;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            <div class="form-group col-md-6 col-12 d-flex align-items-center">
+              <span
+                for=""
+                style="font-size: 15px"
+                class="fillter-name col-6 text-center"
+                >Thể loại:</span
+              >
+              <select
+                ng-model="idCategory"
+                style="font-size: 15px"
+                class="form-control form-control-sm col-lg-6 col-sm-3"
+                name=""
+                id=""
+              >
+                <option value="">Chọn thể loại</option>
+                <option value="{{item.id}}" ng-repeat="item in listCategory">
+                  {{item.code + ' - '}} {{item.name}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 15px">
+          <div
+            class="col-lg-6 col-md-12"
+            style="
+              text-align: center;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            <div class="form-group col-md-6 col-12 d-flex align-items-center">
+              <span
+                for=""
+                style="font-size: 15px"
+                class="fillter-name col-6 text-center"
+                >Thời gian bắt đầu:</span
+              >
+              <input
+                ng-model="startTime"
+                type="datetime-local"
+                class="form-control form-control-sm col-lg-6 col-sm-3"
+              />
+            </div>
+          </div>
+          <div
+            class="col-lg-6 col-md-12"
+            style="
+              text-align: center;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            <div class="form-group col-md-6 col-12 d-flex align-items-center">
+              <span
+                for=""
+                style="font-size: 15px"
+                class="fillter-name col-6 text-center"
+                >Thời gian kết thúc:</span
+              >
+              <input
+                ng-model="endTime"
+                type="datetime-local"
+                class="form-control form-control-sm col-lg-6 col-sm-3"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 15px">
+          <div
+            class="col-lg-6 col-md-12"
+            style="
+              text-align: center;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            <div class="form-group col-md-6 col-12 d-flex align-items-center">
+              <span
+                for=""
+                style="font-size: 15px"
+                class="fillter-name col-6 text-center"
+                >Hình thức:</span
+              >
+              <select
+                ng-model="formality"
+                style="font-size: 15px"
+                class="form-control form-control-sm col-lg-6 col-sm-3"
+                name=""
+                id=""
+              >
+                <option value="">Chọn hình thức</option>
+                <option value="0">Online</option>
+                <option value="1">Offline</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 15px">
+          <div class="col-6" style="text-align: right">
+            <button
+              style="background-color: rgb(37, 116, 182)"
+              class="btn btn-primary btn-sm"
+              ng-click="searchEvent()"
+            >
+              Tìm kiếm
+            </button>
+          </div>
+          <div class="col-6" style="text-align: left">
+            <button ng-click="clearFilter()" class="btn btn-danger btn-sm">
+              Làm mới bộ lọc
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="my-event-manager">
+  <div class="container">
+    <div style="display: flex; justify-content: space-between">
+      <h5 style="margin: 0">Danh sách sự kiện</h5>
+      <div class="sap_xep">
+        <div class="mb-3">
+          <select
+            class="form-select form-select-sm"
+            style="font-size: 15px"
+            ng-change="sortEvent()"
+            name=""
+            ng-model="valueSort"
+            id=""
+          >
+            <option value="3">Sự kiện đang diễn ra</option>
+            <option value="2">Sự kiện mới tạo</option>
+            <option value="0">Sự kiện sắp diễn ra</option>
+            <option value="1">Sự kiện kết thúc gần nhất</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div
+          ng-repeat="item in listEvent"
+          class="col-lg-4 col-md-6 col-sm-12"
+          style="position: relative; margin-bottom: 20px"
+        >
+          <a href="#detail-event/{{item.id}}" class="link_event"
+            ><div class="box_event">
+              <div class="header_img">
+                <img
+                  ng-if="item.thumbnailPath != null"
+                  src="../assets/images/images_events/{{item.id}}/{{item.thumbnailPath}}"
+                  alt=""
+                />
+                <img
+                  ng-if="item.thumbnailPath == null"
+                  src="../assets/images/background.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="header_event">
+                <span class="name_event">{{item.name}}</span>
+              </div>
+              <div class="content_event">
+                <span>- Bắt đầu: {{item.convertStartTime}}</span><br />
+                <span>- Kết thúc: {{item.convertEndTime}}</span><br />
+                <span
+                  >- Hình thức: {{item.formality == 0 ? "Online" :
+                  "Offline"}}</span
+                ><br />
+                <span
+                  >- Trạng thái: {{item.status == 0 ? 'Chờ phê duyệt' :
+                  item.status == 1 ? 'Cần sửa' : item.status == 2 ? 'Đã phê
+                  duyệt' : 'Đã tổ chức'}}</span
+                ><br />
+              </div></div
+          ></a>
+          <div style="text-align: center">
+            <a
+              data-toggle="tooltip"
+              title="Ngó danh sách sinh viên đã đăng ký và câu hỏi"
+              href="#participant-and-question/{{item.id}}"
+              ><button class="list-student">
+                <i class="fa fa-user"></i></button
+            ></a>
+            <a
+              data-toggle="tooltip"
+              title="Ngó danh sách điểm danh"
+              href="#attendance/{{item.id}}"
+              ><button class="attendance-button">
+                <i class="fa fa-check"></i></button
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div
+        ng-if="listEvent.length == 0"
+        class="row"
+        style="
+          justify-content: center;
+          align-items: center;
+          font-size: 20px;
+          text-align: center;
+        "
+      >
+        <span>{{nodatListEvent}} !!!</span> <br />
+        <a href="#event-register" style="font-size: 18px">Đăng ký ngay !!!</a>
+      </div>
+    </div>
+  </div>
+</div>

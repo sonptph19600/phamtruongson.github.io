@@ -1,0 +1,321 @@
+<div>
+
+    <!-- ======= Mobile nav toggle button ======= -->
+    <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button>
+    <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+    <!-- ======= Header ======= -->
+    <header id="header" class="d-flex flex-column justify-content-center">
+
+        <nav id="navbar" class="navbar nav-menu">
+            <ul>
+                <li>
+                    <a href="#hero" class="nav-link scrollto active" ng-click="scrollToElement('hero')">
+                        <i class="bx bx-home"></i> <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#resume" class="nav-link scrollto" ng-click="scrollToElement('resume')">
+                        <i class='bx bx-info-circle'></i> <span>Thông tin</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#register" class="nav-link scrollto" ng-click="scrollToElement('register')">
+                        <i class='bx bxs-edit-alt'></i> <span>Đăng ký</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#comment" class="nav-link scrollto" ng-click="scrollToElement('comment')">
+                        <i class='bx bx-message-rounded-dots'></i> <span>Comment</span>
+                    </a>
+                </li>
+            </ul>
+        </nav><!-- .nav-menu -->
+
+    </header><!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="row d-flex flex-column justify-content-center">
+        <!-- <img src="assets/images/ct1.jpg" width="1920px" height="1080px" alt=""> -->
+
+        <div class="container" data-aos="zoom-in" data-aos-delay="100">
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= About Section ======= -->
+        <!-- <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2 id="event-name">Làm quen với JSP Servlet</h2>
+                </div>
+                <div class="row">
+                    <img src="file://D:/Album/Test/1.jpg" alt="">
+                </div>
+            </div>
+        </section> -->
+        <!-- End About Section -->
+
+        <div id="modal">
+            <div class="modal-box">
+                <div class=" modal fade" id="attendanceModal" tabindex="-1" role="dialog"
+                    aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                ×
+                            </button>
+                            <div class="modal-body">
+                                <span hidden ng-model="eventIdRegister"></span>
+                                <h3 class="text-center">Điểm danh</h3>
+                                <div class="form-floating mb-3">
+                                    <textarea type="text" class="form-control" ng-model="attendanceForm.feedback"
+                                        id="questionRegister" placeholder="Class name" maxlength="200"></textarea>
+                                    <label for="questionRegister">Góp ý cho sự kiện</label>
+                                    <span class="text-danger" ng-bind="errQuestionRegister"></span>
+                                </div>
+                                <div class="ratting mt-2 text-center">
+                                    <div class="cont">
+                                        <div class="title-ratting">
+                                            <h4>Bạn nghĩ sao về sự kiện này</h4>
+                                        </div>
+                                        <div class="stars">
+                                            <input class="star star-5" id="star-5" type="radio" name="star" ng-click="ratting(5)" my-tooltip tooltip-content=""/>
+                                            <label class="star star-5" for="star-5"></label>
+                                            <input class="star star-4" id="star-4" type="radio" name="star" ng-click="ratting(4)"/>
+                                            <label class="star star-4" for="star-4"></label>
+                                            <input class="star star-3" id="star-3" type="radio" name="star" ng-click="ratting(3)"/>
+                                            <label class="star star-3" for="star-3"></label>
+                                            <input class="star star-2" id="star-2" type="radio" name="star" ng-click="ratting(2)"/>
+                                            <label class="star star-2" for="star-2"></label>
+                                            <input class="star star-1" id="star-1" type="radio" name="star" ng-click="ratting(1)"/>
+                                            <label class="star star-1" for="star-1"></label>
+                                        </div>
+                                    </div>
+                                    <span class="text-danger" ng-if="checkRatting">
+                                        (*)Vui lòng đánh giá về sự kiện
+                                    </span>
+                                </div>
+                                <button class="subscribe mt-2" ng-click="sendAttendance()">
+                                    Gửi điểm danh
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======= Resume Section ======= -->
+        <section id="resume" class="resume">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>{{eventDetail.name}}</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="resume-item">
+                            <h4><i class='bx bx-time'></i> Thời gian</h4>
+                            <ul>
+                                <li>Thời gian bắt đầu: {{eventDetail.startTime}}</li>
+                                <li>Thời gian kết thúc: {{eventDetail.endTime}}</li>
+                            </ul>
+                        </div>
+                        <div class="resume-item">
+                            <h4><i class="bi bi-geo-alt"></i> Địa điểm</h4>
+                            <h5>{{eventDetail.formality == 0 ? "Online" : "Offline"}}</h5>
+                            <ul>
+                                <li>
+                                    <a href="{{eventDetail.location}}">Meet 1</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="resume-item">
+                            <h4><i class="fa-solid fa-chalkboard-user"></i> Giảng viên tham gia</h4>
+                            <ul>
+                                <li ng-repeat="organizer in lstOrganizer track by $index">
+                                    {{organizer.name}} - {{organizer.account}}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="resume-item">
+                            <h4><i class='bx bxs-file-archive'></i> Tài liệu</h4>
+                            <ul>
+                                <li>Project mẫu: ........</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="resume-item">
+                            <h4><i class='bx bx-edit'></i> Mô tả</h4>
+                            <p>
+                                {{eventDetail.description}}
+                            </p>
+                        </div>
+                        <div class="resume-item">
+                            <h4><i class='bx bx-image'></i> Background</h4>
+                            <p>
+                                <a href="#"><i class='bx bxs-download'></i>Tải xuống</a>
+                            </p>
+                        </div>
+                        <div class="resume-item">
+                            <h4>
+                                <button class="subscribe" id="a" ng-click="openModalAttendance()">Điểm danh</button>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Resume Section -->
+
+        <!-- ======= register Section ======= -->
+        <section id="register" class="register" ng-if="eventStatus == 2">
+            <div class="container col-lg-9" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Đăng ký tham gia</h2>
+                </div>
+                <div class="row mt-1">
+
+                    <div class="col-lg mt-5 mt-lg-0">
+
+                        <div class="register-form">
+                            <div class="row">
+                                <div class="form-floating col-md-6">
+                                    <input type="email" class="form-control" maxlength="50" id="floatingInput"
+                                        placeholder="name@example.com">
+                                    <label for="floatingInput" class="label-input">
+                                        <span class="text-danger">(*)</span>
+                                        Email
+                                    </label>
+                                    <span class="text-danger" ng-bind="errEmailRegister"></span>
+                                </div>
+                                <div class="form-floating col-md-6 m``t-3 mt-md-0">
+                                    <input type="email" class="form-control" maxlength="10" id="floatingInput"
+                                        placeholder="name@example.com">
+                                    <label for="floatingInput" class="label-input">Tên lớp</label>
+                                </div>
+                            </div>
+                            <div class="form-floating mt-3 mb-3">
+                                <textarea class="form-control" maxlength="1000" placeholder="Leave a comment here"
+                                    id="floatingTextarea2" style="height: 100px"></textarea>
+                                <label for="floatingTextarea2">Câu hỏi dành cho chương trình</label>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" ng-click="eventRegister()">
+                                    Đăng ký
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End register Section -->
+        <section id="comment" class="comment">
+            <div class="container col-lg-9" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Comment</h2>
+                </div>
+                <div class="row mt-1">
+                    <div class="container mb-5">
+                        <div class="row height d-flex justify-content-center align-items-center">
+                            <div class="col-md">
+                                <div class="card">
+                                    <div class="mt-3 d-flex flex-row align-items-center p-3 form-color">
+                                        <div class="avatar">
+                                            <img src="../assets/images/IMG_6530.JPG">
+
+                                        </div>
+                                        <input type="text" maxlength="1000" class="form-control"
+                                            placeholder="Enter your comment...">
+                                        <button class="btn-post" ng-click="postComment()">
+                                            <i class='bx bx-send'></i>
+                                        </button>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div class="d-flex flex-row p-3">
+                                            <div class="avatar">
+                                                <img src="../assets/images/participant_avatar.jpg">
+                                            </div>
+                                            <div class="w-100">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <span class="mr-2">Brian selter</span>
+                                                    </div>
+                                                    <small>12h ago</small>
+                                                </div>
+                                                <p class="text-justify comment-text mb-0">Lorem ipsum dolor sit amet,
+                                                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                                    labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                                                <div class="d-flex flex-row user-feed">
+                                                    <button class="delete-comment">
+                                                        <i class='bx bx-message-rounded-x'></i> Delete
+                                                    </button>
+                                                    <button class="reply-comment ml-3">
+                                                        <i class='bx bx-reply'></i></i> Reply
+                                                        </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row p-3">
+                                            <div class="avatar">
+                                                <img src="../assets/images/IMG_6530.JPG">
+                                            </div>
+                                            <div class="w-100">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <span class="mr-2">Brian selter</span>
+                                                    </div>
+                                                    <small>12h ago</small>
+                                                </div>
+                                                <p class="text-justify comment-text mb-0">Lorem ipsum dolor sit amet,
+                                                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                                    labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                                                <div class="d-flex flex-row user-feed">
+                                                    <button class="delete-comment">
+                                                        <i class='bx bx-message-rounded-x'></i> Delete
+                                                    </button>
+                                                    <button class="reply-comment ml-3">
+                                                        <i class='bx bx-reply'></i></i> Reply
+                                                        </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <h3>Trường CĐ FPT Polytechnic</h3>
+            <p>
+                Portal event
+            </p>
+            <div class="social-links">
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; Copyright <strong><span>Fpoly Factory</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                Designed by Team E
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <div id="preloader"></div>
+    <button class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></button>
+</div>

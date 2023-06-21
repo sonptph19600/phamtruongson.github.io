@@ -1,0 +1,152 @@
+.regester-event {
+  background-color: rgb(255, 255, 255);
+  padding: 30px;
+  position: relative;
+  box-shadow: 1px 1px 1px 1px rgba(235, 235, 235, 0.2),
+    -1px 1px 1px 1px rgba(235, 235, 235, 0.2),
+    1px -1px 1px 1px rgba(235, 235, 235, 0.2),
+    -1px -1px 1px 1px rgba(235, 235, 235, 0.2);
+  margin-top: 20px;
+}
+
+.bat_buoc {
+  color: red;
+}
+
+.form-select.custom {
+  height: 40px;
+}
+
+.row.title-regester-event {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.list_resource {
+  margin-top: 10px;
+}
+
+.btn_add_resource {
+  width: 130px;
+  margin-bottom: 10px;
+  border: none;
+  height: 33px;
+  border-radius: 3px;
+  font-size: 14px;
+  color: white;
+  background-color: rgb(244, 151, 53);
+}
+
+.btn_add_resource:hover {
+  width: 130px;
+  margin-bottom: 10px;
+  border: none;
+  height: 33px;
+  border-radius: 3px;
+  font-size: 14px;
+  color: white;
+  background-color: rgb(225, 116, 0);
+}
+
+.btn_regester_event {
+  margin-top: 20px;
+  border: none;
+  height: 35px;
+  border-radius: 3px;
+  font-size: 14px;
+  color: white;
+  background-color: rgb(63, 119, 198);
+}
+
+.btn_regester_event:hover {
+  margin-top: 20px;
+  border: none;
+  height: 35px;
+  border-radius: 3px;
+  font-size: 14px;
+  color: white;
+  background-color: rgb(20, 85, 176);
+}
+
+.btn_edit_resource {
+  border: none;
+  height: 28px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: white;
+  background-color: rgb(63, 119, 198);
+}
+
+.btn_edit_resource:hover {
+  border: none;
+  height: 28px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: white;
+  background-color: rgb(20, 85, 176);
+}
+
+.btn_delete_resource {
+  border: none;
+  height: 28px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: white;
+  background-color: rgb(239, 66, 66);
+}
+
+.btn_delete_resource:hover {
+  border: none;
+  height: 28px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: white;
+  background-color: rgb(211, 33, 33);
+}
+
+.description_resource {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 15px;
+}
+
+.btn_add_category {
+  border: none;
+  color: white;
+  font-size: 14px;
+  margin-left: 10px;
+  width: 130px;
+  background-color: rgb(244, 151, 53);
+  border-radius: 3px;
+}
+
+.btn_add_category:hover {
+  border: none;
+  color: white;
+  font-size: 14px;
+  margin-left: 10px;
+  width: 130px;
+  background-color: rgb(230, 134, 32);
+  border-radius: 3px;
+}
+
+.btn_clear_regester_event {
+  border: none;
+  height: 35px;
+  border-radius: 3px;
+  font-size: 15px;
+  background-color: rgb(239, 239, 239);
+  margin-top: 10px;
+}
+
+.btn_clear_regester_event:hover {
+  border: none;
+  height: 35px;
+  border-radius: 3px;
+  font-size: 15px;
+  background-color: rgb(210, 210, 210);
+  margin-top: 10px;
+}
+
+.quill_descriptions {
+  font-size: 16px;
+}

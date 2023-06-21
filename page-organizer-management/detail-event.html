@@ -1,0 +1,561 @@
+<div class="">
+  <h5>{{detailEvent.name}}</h5>
+  <h6>
+    <a href="#detail-event/{{detailEvent.id}}" class="active_url"
+      >Chi tiết sự kiện</a
+    >
+    |
+    <a href="#participant-and-question/{{detailEvent.id}}"
+      >Danh sách sinh viên đã đăng ký</a
+    >
+    | <a href="#attendance/{{detailEvent.id}}">Điểm danh</a>
+  </h6>
+  <div class="detail-event">
+    <div class="container">
+      <div class="row">
+        <div class="card card-timeline px-3 border-none">
+          <ul class="bs4-order-tracking">
+            <li class="step" ng-class="{active: detailEvent.status >= 0}">
+              <div><i class="fas fa-hourglass-half"></i></div>
+              Chờ phê duyệt
+            </li>
+            <li class="step" ng-class="{active: detailEvent.status >= 1}">
+              <div><i class="fas fa-pencil-alt"></i></div>
+              Cần sửa
+            </li>
+            <li class="step" ng-class="{active: detailEvent.status >= 2}">
+              <div><i class="fas fa-check-circle"></i></div>
+              Đã phê duyệt
+            </li>
+            <li class="step" ng-class="{active: detailEvent.status >= 3}">
+              <div><i class="fas fa-calendar-check"></i></div>
+              Đã tổ chức
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row" style="font-size: 18px; margin-top: 10px">
+        Thông tin của sự kiện:
+      </div>
+      <div class="row" style="margin-top: 15px">
+        <div class="col-lg-6">
+          <div class="mb-3">
+            <label for="" class="form-label"
+              ><span class="bat_buoc">(*)</span> Tên sự kiện:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name=""
+              ng-disabled="detailEvent.status >= 2"
+              id=""
+              ng-model="detailEvent.name"
+              aria-describedby="helpId"
+              placeholder="Nhập tên sự kiện"
+            />
+            <small id="helpId" class="form-text text-danger"
+              >{{errorNameEvent}}</small
+            >
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label"
+              ><span class="bat_buoc">(*)</span> Thời gian bắt đầu:</label
+            >
+            <input
+              type="datetime-local"
+              class="form-control"
+              ng-disabled="detailEvent.status >= 2"
+              ng-model="detailEvent.startTime"
+              name=""
+              id=""
+              aria-describedby="helpId"
+              placeholder=""
+            />
+            <small class="form-text text-danger">{{errorStartTimeEvent}}</small>
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label"
+              ><span class="bat_buoc">(*)</span> Thời gian kết thúc:</label
+            >
+            <input
+              type="datetime-local"
+              class="form-control"
+              ng-disabled="detailEvent.status >= 2"
+              ng-model="detailEvent.endTime"
+              name=""
+              id=""
+              aria-describedby="helpId"
+              placeholder=""
+            />
+            <small class="form-text text-danger">{{errorEndTimeEvent}}</small>
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Thumbnail:</label>
+            <div style="margin-bottom: 15px">
+              <img
+                ng-if="detailEvent.thumbnailPath != null"
+                style="border-radius: 5px"
+                id="showImageThumbnail"
+                width="100%"
+                src="../assets/images/images_events/{{detailEvent.id}}/{{detailEvent.thumbnailPath}}"
+                alt=""
+              />
+              <span ng-if="detailEvent.thumbnailPath == null" class="bat_buoc"
+                >Chưa có thumbnail !!!</span
+              >
+            </div>
+            <input
+              ng-disabled="detailEvent.status >= 2"
+              type="file"
+              class="form-control"
+              name=""
+              id="valueThumbnailEvent"
+              accept="image/*"
+              placeholder=""
+              aria-describedby="fileHelpId"
+            />
+          </div>
+          <div class="mb-3">
+            <button
+              ng-disabled="detailEvent.status >= 2"
+              ng-click="deleteThumbnail()"
+              class="delete_thumbnail"
+            >
+              Xóa Thumbnail
+            </button>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="mb-3">
+            <label for="" class="form-label"
+              ><span class="bat_buoc">(*)</span> Hình thức:</label
+            >
+            <select
+              name=""
+              ng-disabled="detailEvent.status >= 2"
+              ng-model="detailEvent.formality"
+              style="font-size: 15px"
+              class="form-select custom"
+              id=""
+            >
+              <option value="" hidden>Chọn hình thức</option>
+              <option value="0">Online</option>
+              <option value="1">Offline</option>
+            </select>
+            <small class="form-text text-danger">{{errorFormalityEvent}}</small>
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label"
+              ><span class="bat_buoc">(*)</span> Địa điểm:</label
+            >
+            <input
+              type="text"
+              ng-disabled="detailEvent.status >= 2"
+              class="form-control"
+              name=""
+              ng-model="detailEvent.location"
+              id=""
+              aria-describedby="helpId"
+              placeholder="Nhập địa điểm, đường link zoom, meet ..."
+            />
+            <small id="helpId" class="form-text text-danger"
+              >{{errorLocationEvent}}</small
+            >
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label"
+              ><span class="bat_buoc">(*)</span> Thể loại:</label
+            >
+            <div style="display: flex">
+              <select
+                name=""
+                ng-disabled="detailEvent.status >= 2"
+                ng-model="detailEvent.categoryId"
+                style="font-size: 15px; width: 75%"
+                class="form-select custom"
+                id=""
+              >
+                <option value="" hidden>Chọn thể loại</option>
+                <option value="{{item.id}}" ng-repeat="item in listCategory">
+                  {{item.code + ' - '}} {{item.name}}
+                </option>
+              </select>
+              <button
+                ng-disabled="detailEvent.status >= 2"
+                data-bs-toggle="modal"
+                data-bs-target="#modal_add_category"
+                class="btn_add_category"
+                ng-click="openModalAddCategory()"
+              >
+                Thêm thể loại
+              </button>
+            </div>
+            <small class="form-text text-danger">{{errorCategoryEvent}}</small>
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Background:</label>
+            <div style="margin-bottom: 15px">
+              <img
+                width="100%"
+                ng-if="detailEvent.backgroundPath != null"
+                id="showImageBackground"
+                style="border-radius: 5px"
+                src="../assets/images/images_events/{{detailEvent.id}}/{{detailEvent.backgroundPath}}"
+                alt=""
+              />
+              <span ng-if="detailEvent.backgroundPath == null" class="bat_buoc"
+                >Chưa có background !!!</span
+              >
+            </div>
+            <input
+              ng-disabled="detailEvent.status >= 2"
+              type="file"
+              accept="image/*"
+              class="form-control"
+              name=""
+              id="valueBackgroundEvent"
+              placeholder=""
+              aria-describedby="fileHelpId"
+            />
+          </div>
+          <div class="mb-3">
+            <button
+              ng-disabled="detailEvent.status >= 2"
+              ng-click="deleteBackground()"
+              class="delete_thumbnail"
+            >
+              Xóa Background
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mb-3">
+          <label for="" class="form-label">Mô tả:</label>
+          <div class="box_quill_description">
+            <div
+              quill-editor
+              ng-if="detailEvent.status < 2"
+              class="quill_descriptions"
+              ng-model="detailEvent.description"
+            ></div>
+            <div
+              quill-viewer
+              ng-if="detailEvent.status >= 2"
+              class="quill_descriptions"
+              ng-model="detailEvent.description"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div class="row title-regester-event">Tài nguyên của sự kiện:</div>
+      <div class="row">
+        <button
+          class="btn_add_resource"
+          data-bs-toggle="modal"
+          ng-disabled="detailEvent.status >= 2"
+          ng-click="clearFormAddResource()"
+          data-bs-target="#modal_add_resource"
+        >
+          Thêm tài nguyên
+        </button>
+        <span>Danh sách tài nguyên:</span>
+        <div class="list_resource" ng-repeat="item in listResource">
+          <div class="content_resource">
+            <span class="bat_buoc">(*) Tài nguyên {{$index + 1}}:</span> <br />
+            <span>- Tên tài nguyên: {{item.name}}</span> <br />
+            <span
+              >- Đường link:
+              <a href="{{item.path}}" target="{{item.path}}"
+                >{{item.path}}</a
+              ></span
+            >
+            <br />
+            <span
+              >- Mô tả:
+              <pre class="description_resource">{{item.description}}</pre>
+            </span>
+          </div>
+          <button
+            ng-click="openModalUpdateResource($index, item.id, item.name, item.path, item.description)"
+            class="btn_edit_resource"
+            ng-disabled="detailEvent.status >= 2"
+          >
+            Chỉnh sửa
+          </button>
+          <button
+            ng-click="deleteResource($index, item.id)"
+            class="btn_delete_resource"
+            ng-disabled="detailEvent.status >= 2"
+          >
+            Xóa
+          </button>
+        </div>
+        <span style="margin-top: 10px; color: red">{{dataResourceEmpty}}</span>
+        <span class="bat_buoc" style="margin-top: 10px"
+          >Lưu ý: Tài nguyên có thể thêm sau khi đăng ký sự kiện với điều kiện
+          sự kiện đó đang ở trạng thái chờ phê duyệt</span
+        >
+      </div>
+      <div class="row">
+        <button
+          ng-disabled="detailEvent.status >= 2"
+          ng-click="saveEvent()"
+          class="save_detail_event"
+        >
+          Lưu thay đổi
+        </button>
+      </div>
+    </div>
+    <button
+      ng-disabled="detailEvent.status >= 2"
+      ng-click="saveEvent()"
+      id="scroll-top-btn"
+    >
+      Lưu thay đổi
+    </button>
+  </div>
+  <!--  -->
+  <div
+    class="modal fade"
+    id="modal_add_category"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Thêm thể loại</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="" class="form-label"
+              ><span class="bat_buoc">(*)</span> Mã thể loại:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name=""
+              ng-model="codeCategory"
+              id=""
+              aria-describedby="helpId"
+              placeholder="Nhập mã thể loại"
+            />
+            <small id="helpId" class="form-text text-danger"
+              >{{errorCodeCategory}}</small
+            >
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label"
+              ><span class="bat_buoc">(*)</span> Tên thể loại:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name=""
+              ng-model="nameCategory"
+              id=""
+              aria-describedby="helpId"
+              placeholder="Nhập tên thể loại"
+            />
+            <small id="helpId" class="form-text text-danger"
+              >{{errorNameCategory}}</small
+            >
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary btn-sm"
+            data-bs-dismiss="modal"
+          >
+            Hủy
+          </button>
+          <button
+            type="button"
+            ng-click="addCategory()"
+            class="btn btn-primary btn-sm"
+          >
+            Thêm mới
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="modal fade"
+    id="modal_add_resource"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Thêm tài nguyên</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="" class="form-label"
+              ><span class="bat_buoc">(*)</span> Tên tài nguyên:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name=""
+              ng-model="nameResourceAdd"
+              id=""
+              aria-describedby="helpId"
+              placeholder="Nhập tên tài nguyên"
+            />
+            <small id="helpId" class="form-text text-danger"
+              >{{errorNameResourceAdd}}</small
+            >
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label"
+              ><span class="bat_buoc">(*)</span> Đường link:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              ng-model="pathResourceAdd"
+              name=""
+              id=""
+              aria-describedby="helpId"
+              placeholder="Nhập đường dẫn"
+            />
+            <small id="helpId" class="form-text text-danger"
+              >{{errorPathResourceAdd}}</small
+            >
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Mô tả:</label>
+            <textarea
+              class="form-control"
+              name=""
+              ng-model="descriptionResourceAdd"
+              placeholder="Thêm mô tả cho tài nguyên"
+              id=""
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary btn-sm"
+            data-bs-dismiss="modal"
+          >
+            Hủy
+          </button>
+          <button
+            type="button"
+            ng-click="addResource()"
+            class="btn btn-primary btn-sm"
+          >
+            Thêm mới
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal update resource -->
+  <div
+    class="modal fade"
+    id="modal_update_resource"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Cập nhật tài nguyên</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="" class="form-label"
+              ><span class="bat_buoc">(*)</span> Tên tài nguyên:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name=""
+              ng-model="nameResourceUpdate"
+              id="nameResourceUpdate"
+              aria-describedby="helpId"
+              placeholder="Nhập tên tài nguyên"
+            />
+            <small id="helpId" class="form-text text-danger"
+              >{{errorNameResourceUpdate}}</small
+            >
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label"
+              ><span class="bat_buoc">(*)</span> Đường link:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              ng-model="pathResourceUpdate"
+              name=""
+              id="pathResourceUpdate"
+              aria-describedby="helpId"
+              placeholder="Nhập đường dẫn"
+            />
+            <small id="helpId" class="form-text text-danger"
+              >{{errorPathResourceUpdate}}</small
+            >
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Mô tả:</label>
+            <textarea
+              class="form-control"
+              name=""
+              ng-model="descriptionResourceUpdate"
+              placeholder="Thêm mô tả cho tài nguyên"
+              id="descriptionResourceUpdate"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary btn-sm"
+            data-bs-dismiss="modal"
+          >
+            Hủy
+          </button>
+          <button
+            type="button"
+            ng-click="updateResource()"
+            class="btn btn-primary btn-sm"
+          >
+            Cập nhật
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

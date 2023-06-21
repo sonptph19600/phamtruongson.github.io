@@ -1,0 +1,110 @@
+.active_url {
+  color: #e44e0e;
+  text-decoration: underline;
+}
+.container-fluid.custom {
+  margin-top: 30px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1px 1px 1px 1px rgba(235, 235, 235, 0.2),
+    -1px 1px 1px 1px rgba(235, 235, 235, 0.2),
+    1px -1px 1px 1px rgba(235, 235, 235, 0.2),
+    -1px -1px 1px 1px rgba(235, 235, 235, 0.2);
+  padding: 20px 20px 50px 20px;
+}
+
+.container-fluid.filter {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1px 1px 1px 1px rgba(235, 235, 235, 0.2),
+    -1px 1px 1px 1px rgba(235, 235, 235, 0.2),
+    1px -1px 1px 1px rgba(235, 235, 235, 0.2),
+    -1px -1px 1px 1px rgba(235, 235, 235, 0.2);
+  padding: 20px 20px 50px 20px;
+  margin-top: 20px;
+}
+.title_filter {
+  font-size: 20px;
+}
+.attendance {
+  background-color: rgb(255, 255, 255);
+  padding: 30px 30px 50px 30px;
+  position: relative;
+  box-shadow: 1px 1px 1px 1px rgba(235, 235, 235, 0.2),
+    -1px 1px 1px 1px rgba(235, 235, 235, 0.2),
+    1px -1px 1px 1px rgba(235, 235, 235, 0.2),
+    -1px -1px 1px 1px rgba(235, 235, 235, 0.2);
+  margin-top: 20px;
+}
+.back {
+  border: none;
+  background-color: transparent;
+  width: 37px;
+  height: 37px;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.back:hover {
+  border: none;
+  background-color: rgb(232, 237, 241);
+  width: 37px;
+  height: 37px;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.next {
+  border: none;
+  background-color: transparent;
+  width: 37px;
+  height: 37px;
+  margin-left: 5px;
+  border-radius: 3px;
+}
+
+.next:hover {
+  border: none;
+  background-color: rgb(232, 237, 241);
+  width: 37px;
+  height: 37px;
+  margin-left: 5px;
+  border-radius: 3px;
+}
+
+.currentPage {
+  width: 45px;
+  height: 100%;
+  border: none;
+}
+
+.totalPage {
+  text-align: center;
+  width: 50px;
+  height: 100%;
+  border: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.select_chosen_size {
+  width: 70px;
+  font-size: 15px;
+  border: 1px solid #2775c4;
+  border-radius: 3px;
+}
+
+.btn_export {
+  border: none;
+  height: 30px;
+  color: white;
+  font-size: 15px;
+  border-radius: 3px;
+  background-color: rgb(65, 170, 33);
+}
+
+.bat_buoc {
+  color: red;
+}

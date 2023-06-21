@@ -1,5 +1,55 @@
----
-layout: home
-title: Phạm Trường Sơn
-subtitle: This is where I will tell my friends way too much about me
----
+<!doctype html>
+<html lang="en"   ng-app="homeApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <title>Portal event | FPT Polytechnic</title> -->
+    <title ng-bind="title + ' | FPT Polytechnic'"></title>
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap" rel="stylesheet">
+
+    <!-- Library -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.css">
+    <link rel="stylesheet" href="assets/vendor/sweetalert2/sweetalert2.css">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/vendor/toastr/toastr.min.css">
+    <!-- Custom -->
+    <!-- <link href="assets/css/home.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="assets/css/detail-style.css"> -->
+</head>
+
+<body>
+
+    <ng-view></ng-view>
+
+    <!-- Library -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="assets/vendor/angular/angular.min.js"></script>
+    <script src="assets/vendor/angular/angular-route.min.js"></script>
+    <script src="assets/vendor/angular/angular-css.js"></script>
+    <script src="assets/vendor/jquery/jquery-3.6.4.min.js"></script>
+    <script src="assets/vendor/oclazyload/ocLazyLoad.js"></script>
+    <script src="assets/vendor/sweetalert2/sweetalert2.js"></script>
+    <script src="assets/vendor/typed.js/typed.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/fullcalendar/index.global.js"></script>
+    <script src="assets/vendor/fullcalendar/index.global.bs5.js"></script>
+    <script src="assets/vendor/toastr/toastr.min.js"></script>
+
+    <!-- Custom -->
+    <script src="config/home-app.js"></script>
+    <script src="controller/home-controller.js"></script>
+    <script src="controller/detail-controller.js"></script>
+    <script src="route/home-route.js"></script>
+    <script src="config/api.js"></script>
+</body>
+
+</html>

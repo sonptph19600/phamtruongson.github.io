@@ -1,0 +1,131 @@
+.my-event-manager {
+  background-color: rgb(255, 255, 255);
+  padding: 30px;
+  position: relative;
+  box-shadow: 1px 1px 1px 1px rgba(235, 235, 235, 0.2),
+    -1px 1px 1px 1px rgba(235, 235, 235, 0.2),
+    1px -1px 1px 1px rgba(235, 235, 235, 0.2),
+    -1px -1px 1px 1px rgba(235, 235, 235, 0.2);
+  margin-top: 20px;
+}
+
+.btn_filter_event {
+  margin-left: 15px;
+  margin-right: 15px;
+  border: none;
+  background-color: rgb(242, 139, 75);
+  color: white;
+  height: 33px;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.btn_filter_event:hover {
+  margin-left: 15px;
+  margin-right: 15px;
+  border: none;
+  background-color: rgb(219, 106, 36);
+  color: white;
+  height: 33px;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.box_event {
+  width: 100%;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 15px;
+  height: 400px;
+  background-color: rgb(249, 248, 248);
+  border-radius: 3px;
+}
+
+.link_event {
+  width: 100%;
+  height: 100%;
+}
+
+.header_event {
+  margin-top: 5px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.name_event {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.header_img img {
+  width: 100%;
+  border-radius: 5px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.content_event {
+  margin-top: 10px;
+}
+
+.btn_filter_event.active {
+  background-color: rgb(37, 116, 182);
+  color: white;
+}
+
+.container-fluid.custom {
+  margin-top: 30px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1px 1px 1px 1px rgba(235, 235, 235, 0.2),
+    -1px 1px 1px 1px rgba(235, 235, 235, 0.2),
+    1px -1px 1px 1px rgba(235, 235, 235, 0.2),
+    -1px -1px 1px 1px rgba(235, 235, 235, 0.2);
+  padding: 20px 20px 50px 20px;
+}
+
+.container-fluid.filter {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1px 1px 1px 1px rgba(235, 235, 235, 0.2),
+    -1px 1px 1px 1px rgba(235, 235, 235, 0.2),
+    1px -1px 1px 1px rgba(235, 235, 235, 0.2),
+    -1px -1px 1px 1px rgba(235, 235, 235, 0.2);
+  padding: 20px 20px 50px 20px;
+  margin-top: 20px;
+}
+.title_filter {
+  font-size: 20px;
+}
+
+.attendance-button {
+  border: none;
+  width: 33px;
+  height: 33px;
+  color: white;
+  border-radius: 0 0 5px 5px;
+  background-color: #eba23d;
+}
+
+.attendance-button:hover {
+  background-color: #d18925;
+}
+
+.list-student {
+  border: none;
+  width: 33px;
+  height: 33px;
+  color: white;
+  border-radius: 0 0 5px 5px;
+  background-color: #50b454;
+}
+
+.list-student:hover {
+  border: none;
+  width: 33px;
+  height: 33px;
+  color: white;
+  border-radius: 0 0 5px 5px;
+  background-color: #31a835;
+}
+

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Quản lý | Người phê duyệt</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="https://ap.poly.edu.vn/images/favicon.ico">
+
+    <!-- Libary -->
+    <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/fontawesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/feathericon/feathericon.min.css">
+    <!-- <link rel="stylesheet" href="assets/plugins/morris/morris.css"> -->
+    <!-- Custom -->
+    <link rel="stylesheet" type="text/css" href="assets/css/management-style.css">
+    <link rel="stylesheet" href="node_modules/chosen-js/chosen.min.css">
+
+</head>
+
+<body ng-app="approverManagementApp">
+
+    <div class="main-wrapper">
+
+        <div class="header">
+
+            <div class="header-left">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/Logo_none.png" alt="Logo">
+                </a>
+                <a href="index.html" class="logo logo-small">
+                    <img src="assets/images/icon.png" alt="Logo" width="60" height="60">
+                </a>
+            </div>
+
+            <a href="javascript:void(0);" id="toggle_btn">
+                <i class="fe fe-text-align-left"></i>
+            </a>
+            <div class="top-nav-search">
+                <form>
+                    <input type="text" class="form-control" placeholder="Search here">
+                    <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+
+            <a class="mobile_btn" id="mobile_btn">
+                <i class="fa fa-bars"></i>
+            </a>
+
+
+            <ul class="nav user-menu">
+
+                <li class="nav-item dropdown noti-dropdown">
+                    <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                        <i class="fa fa-bell"></i> <span class="badge badge-pill">3</span>
+                    </a>
+                    <div class="dropdown-menu notifications">
+                        <div class="topnav-dropdown-header">
+                            <span class="notification-title">Notifications</span>
+                            <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+                        </div>
+                        <div class="noti-content">
+                            <ul class="notification-list">
+                                <li class="notification-message">
+                                    <a href="#">
+                                        <div class="media d-flex">
+                                            <span class="avatar avatar-sm flex-shrink-0">
+                                                <img class="avatar-img rounded-circle" alt="User Image"
+                                                    src="assets/images/IMG_6530.JPG">
+                                            </span>
+                                            <div class="media-body flex-grow-1">
+                                                <p class="noti-details"><span class="noti-title">Carlson Tech</span> has
+                                                    approved <span class="noti-title">your estimate</span></p>
+                                                <p class="noti-time"><span class="notification-time">4 mins ago</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="topnav-dropdown-footer">
+                            <a href="#">View all Notifications</a>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="nav-item dropdown has-arrow">
+                    <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                        <span class="user-img"><img class="rounded-circle" src="assets/images/IMG_6530.JPG"
+                                width="31"></span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="user-header">
+                            <div class="avatar avatar-sm">
+                                <img src="assets/images/IMG_6530.JPG" alt="User Image"
+                                    class="avatar-img rounded-circle">
+                            </div>
+                            <div class="user-text">
+                                <h6>Phạm Trường Sơn</h6>
+                                <p class="text-muted mb-0">Người phê duyệt</p>
+                            </div>
+                        </div>
+                        <a class="dropdown-item" href="general.html">My Profile</a>
+                        <a class="dropdown-item" href="login.html">Logout</a>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">
+                        </li>
+                        <li class="active">
+                            <a href="#home"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+                        </li>
+                        <li class="submenu">
+                            <a href="#">
+                                <i class="fe fe-users"></i> 
+                                <span> Sự kiện</span> 
+                                <span class="fa-solid fa-caret-down"></span>
+                            </a>
+                            <ul style="display: none;">
+                                <li><a href="users.html"></a></li>
+                                <li><a href="#home/event-manager">Phê duyệt sự kiện</a></li> 
+                                <li><a href="report-users.html">Report User</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                <div class="row">
+                    <!-- Inlcude nội dung zô đây -->
+                    <ng-view></ng-view>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Libary -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/angular/angular.min.js"></script>
+    <script src="assets/vendor/angular/angular-route.min.js"></script>  
+    <script src="assets/vendor/jquery/jquery-3.6.4.min.js"></script>
+    <script src="assets/vendor/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="node_modules/chosen-js/chosen.jquery.min.js"></script>
+
+    <!-- Custom -->
+    <script src="assets/js/management.js"></script>
+    <script src="config/approver-management-app.js"></script>
+    <script src="route/approver-management-route.js"></script>
+    <script src="config/api.js"></script>
+    <!--Controller-->
+    <script src="controller/approver-management-controller/event-approval-controller.js"></script>
+</body>
+
+</html>
